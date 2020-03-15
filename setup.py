@@ -460,19 +460,19 @@ def bootstrap_odoo(url, location):
 
     file_name, file_extension = os.path.splitext(base_name)
     tar = tarfile.open(file_tmp)
-    tar.extractall(temp)    
+    tar.extractall('.')    
 
     #unpack_url(Link(url), temp)
 
     # Move <tempdir>/odoo to ./odoo
-    shutil.move(os.path.join(temp, ODOO), location)
+    #shutil.move(os.path.join(temp, ODOO), location)
 
     # Move addons from <tempdir>/addons to ./odoo/addons
     # This will put them aside the the base addons.
-    for addon in os.listdir(os.path.join(temp, ODOO_ADDONS)):
-        src = os.path.join(temp, ODOO_ADDONS, addon)
-        dest = os.path.join(location, ODOO_ADDONS, addon)
-        shutil.move(src, dest)
+    #for addon in os.listdir(os.path.join(temp, ODOO_ADDONS)):
+    #    src = os.path.join(temp, ODOO_ADDONS, addon)
+    #    dest = os.path.join(location, ODOO_ADDONS, addon)
+    #    shutil.move(src, dest)
 
     return True
 
