@@ -448,14 +448,14 @@ def configure(version, feature=None, languages=None):
 def bootstrap_odoo(url, location):
     try:
         import tarfile
-        import urllib
+        import urllib.request
     except ImportError:
         raise
         return False
     
     print('Boostrapping Odoo from %s' % url)
     temp = tempfile.mkdtemp()    
-    file_tmp = urllib.urlretrieve(url, filename=None)[0]
+    file_tmp = urllib.request.urlretrieve(url, filename=None)[0]
     base_name = os.path.basename(url)
     print(temp)
     print(file_tmp)
