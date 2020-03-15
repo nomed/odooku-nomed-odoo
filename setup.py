@@ -457,11 +457,10 @@ def bootstrap_odoo(url, location):
     temp = tempfile.mkdtemp()    
     file_tmp = urllib.request.urlretrieve(url, filename=None)[0]
     base_name = os.path.basename(url)
-    print(temp)
-    print(file_tmp)
+
     file_name, file_extension = os.path.splitext(base_name)
     tar = tarfile.open(file_tmp)
-    tar.extractall(file_name, path=temp)    
+    tar.extractall(temp)    
 
     #unpack_url(Link(url), temp)
 
