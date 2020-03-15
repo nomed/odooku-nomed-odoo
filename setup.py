@@ -447,7 +447,7 @@ def configure(version, feature=None, languages=None):
 
 def bootstrap_odoo(url, location):
     try:
-        from pip._internal.index import Link
+        from pip._internal.models.link import Link
         from pip._internal.download import unpack_url
     except ImportError:
         return False
@@ -533,8 +533,8 @@ class features(Command):
 
 
 setup(
-    url='https://github.com/odooku/odooku-odoo',
-    author='Raymond Reggers - Adaptiv Design',
+    url='https://github.com/nomed/odooku-nomed-odoo',
+    author='Daniele Favara thanks to Raymond Reggers - Adaptiv Design',
     license='LGPLv3',
     zip_safe=False,
     cmdclass= {
