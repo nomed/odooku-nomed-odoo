@@ -447,14 +447,23 @@ def configure(version, feature=None, languages=None):
 
 def bootstrap_odoo(url, location):
     try:
-        from pip._internal.models.link import Link
-        from pip._internal.download import unpack_url
+        import tarfile
+        import urllib
     except ImportError:
+        raise
         return False
     
     print('Boostrapping Odoo from %s' % url)
-    temp = tempfile.mkdtemp()
-    unpack_url(Link(url), temp)
+    temp = tempfile.mkdtemp()    
+    file_tmp = urllib.urlretrieve(url, filename=None)[0]
+    base_name = os.path.basename(url)
+    print temp
+    print file_tmp
+    file_name, file_extension = os.path.splitext(base_name)
+    tar = tarfile.open(file_tmp)
+    tar.extractall(file_name, path=temp)    
+
+    #unpack_url(Link(url), temp)
 
     # Move <tempdir>/odoo to ./odoo
     shutil.move(os.path.join(temp, ODOO), location)
